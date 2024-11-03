@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+    <title>login page</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=True)%} 
+        {%if messages%}
+        <ul>
+            {%for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {%endfor%}
+        </ul>
+        {% endif %}
+    {% endwith %}    
+<div class="main-login">
+    <div class="left-login">
+        <div id="header">
+            <h4><a href="/">Pagina Principal</a></h4>
+        </div>
+        <img src="{{ url_for('static', filename='key-animate.svg') }}" class="left-login-image" alt="chave animacao">
+    </div>
+        
+    <div class="right-login">
+        <div class="card-login">
+            <h1>Login</h1>
+            <div class="textfield">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" name="usuario" placeholder="Usuario">
+            </div>
+            <div class="textfield">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="Senha" placeholder="Senha">
+            </div>
+            <button class="btn-login" onclick="login()">Login</button>
+            <button class="btn-login" onclick="logout()">Logout</button>
+    </div>
+</div>
+</body>
+
+</html>
