@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Login</title>
 </head>
 <body>
-    ola, gostaria de fazer login?
-    <a type = "submit" href="/login">sim</a>
-    <a type = "submit" href="/">não</a>
-
+    {% with messages = get_flashed_messages(with_categories=True)%}
+        {% if messages%}
+        <ul>
+            {%for category, message in messages %}
+            <li class="{{error}}">{{ message }}</li>
+            {% endfor%}
+        </ul>
+        {% endif %} 
+    {% endwith %}       
+    <form action="/verifica" method="post">
+        <label for="user">Usuario:</label>
+        <input type="text" id="user" name="user">
+        <br>
+        <label for="senha">senha:</label>
+        <input type="password" id="senha" name="senha">
+        <br>
+        <button type="submit">Entrar no Questionário</button>
+    </form>
 </body>
 </html>
